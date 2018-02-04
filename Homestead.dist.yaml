@@ -1,0 +1,19 @@
+ip: 192.168.10.10
+memory: 2048
+cpus: 1
+provider: virtualbox
+authorize: ~/.ssh/id_rsa.pub
+keys:
+    - ~/.ssh/id_rsa
+folders:
+    -
+        map: 'C:\work\tasker'
+        to: /home/vagrant/code
+sites:
+    -
+        map: tasker.dev
+        to: /home/vagrant/code/public
+databases:
+    - homestead
+name: tasker
+hostname: tasker
