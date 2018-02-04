@@ -11,5 +11,3 @@ authentication, projects, boards and comments system
   4. ``php artisan key:generate``  
   5. ``npm install``
   6. ``vagrant up``
-  7. on Vagrant machine run: 
-    ``php artisan passport:install`` and ``php artisan key:generate``
