@@ -1,4 +1,6 @@
-# TaskeR App 
+# TaskeR App
+
+[![Build Status](https://travis-ci.org/ili5/tasker.svg?branch=master)](https://travis-ci.org/ili5/tasker)
 
 Simple task application with user authorization and
 authentication, projects, boards and comments system
