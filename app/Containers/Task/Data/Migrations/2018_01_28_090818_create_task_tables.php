@@ -20,6 +20,7 @@ class CreateTaskTables extends Migration
             $table->unsignedInteger('assigned_id');
             $table->string('title');
             $table->text('description');
+            $table->timestamp('due_date');
             $table->timestamps();
             //$table->softDeletes();
 

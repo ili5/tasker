@@ -15,7 +15,8 @@ class Task extends Model
         'creator_id',
         'assigned_id',
         'title',
-        'description'
+        'description',
+        'due_date'
     ];
 
     protected $attributes = [
@@ -33,6 +34,7 @@ class Task extends Model
     protected $dates = [
         'created_at',
         'updated_at',
+        'due_date'
     ];
 
     /**

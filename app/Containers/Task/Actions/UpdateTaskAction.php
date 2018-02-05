@@ -14,7 +14,8 @@ class UpdateTaskAction extends Action
             'title',
             'description',
             'board_id',
-            'assigned_id'
+            'assigned_id',
+            'due_date'
         ]);
 
         $task = Apiato::call('Task@UpdateTaskTask', [$request->id, $data]);

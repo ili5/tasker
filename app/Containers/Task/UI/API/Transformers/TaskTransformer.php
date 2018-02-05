@@ -35,6 +35,7 @@ class TaskTransformer extends Transformer
             'board' =>  $entity->board->getHashedKey(),
             'title' =>  $entity->title,
             'description'   =>  $entity->description,
+            'due_date'  =>  $entity->due_date,
             'created_at' => $entity->created_at,
             'updated_at' => $entity->updated_at,
         ];

@@ -15,7 +15,8 @@ class CreateTaskAction extends Action
             'board_id',
             'assigned_id',
             'title',
-            'description'
+            'description',
+            'due_date'
         ]);
 
         $data['creator_id'] = request()->user()->id;
