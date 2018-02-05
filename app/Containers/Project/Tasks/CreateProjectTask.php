@@ -24,6 +24,7 @@ class CreateProjectTask extends Task
             return $this->repository->create($data);
         }
         catch (Exception $exception) {
+            dd($exception->getMessage());
             throw new CreateResourceFailedException();
         }
     }

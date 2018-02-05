@@ -9,6 +9,7 @@ use App\Containers\User\UI\API\Requests\FindUserByIdRequest;
 use App\Containers\User\UI\API\Requests\ForgotPasswordRequest;
 use App\Containers\User\UI\API\Requests\GetAllUsersRequest;
 use App\Containers\User\UI\API\Requests\GetAuthenticatedUserRequest;
+use App\Containers\User\UI\API\Requests\MeRequest;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
 use App\Containers\User\UI\API\Requests\ResetPasswordRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
@@ -16,6 +17,7 @@ use App\Containers\User\UI\API\Transformers\UserPrivateProfileTransformer;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use App\Ship\Transporters\DataTransporter;
+use Cartalyst\Stripe\Api\Api;
 
 /**
  * Class Controller.
@@ -155,6 +157,16 @@ class Controller extends ApiController
         Apiato::call('User@ForgotPasswordAction', [new DataTransporter($request)]);
 
         return $this->noContent(202);
+    }
+
+
+    public function me(MeRequest $request)
+    {
+        $request->merge([
+            'id'    =>  Auth()->user()->id
+        ]);
+        $user = Apiato::call('User@FindUserByIdAction', [new DataTransporter($request)]);
+        return $this->transform($user, UserTransformer::class);
     }
 
 }
