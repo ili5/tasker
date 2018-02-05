@@ -1,4 +1,4 @@
-# TaskeR App
+# TaskeR App 
 
 Simple task application with user authorization and
 authentication, projects, boards and comments system
