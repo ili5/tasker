@@ -40,7 +40,8 @@ class TaskSeeder extends Seeder
                             'creator_id'    =>  $creatorId,
                             'assigned_id'   =>  $assignedId,
                             'title' =>  $title,
-                            'description'   =>  $description
+                            'description'   =>  $description,
+                            'due_date'  =>  date("Y-m-d H:i:s", strtotime("+1 day", time()))
                         ]
                     ]);
                 } else {
@@ -53,7 +54,8 @@ class TaskSeeder extends Seeder
                             'creator_id'    =>  $creatorId,
                             'assigned_id'   =>  $assignedId,
                             'title' =>  $title,
-                            'description'   =>  $description
+                            'description'   =>  $description,
+                            'due_date'  =>  date("Y-m-d H:i:s", strtotime("+1 day", time()))
                         ]
                     ]);
                 }
