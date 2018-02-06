@@ -20,6 +20,7 @@ class UpdateProjectTransporter extends Transporter
         ],
         'required'   => [
             // define the properties that MUST be set
+            'id'
         ],
         'default'    => [
             // provide default values for specific properties here

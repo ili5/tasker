@@ -3,6 +3,7 @@
 namespace App\Containers\Project\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
+use Illuminate\Validation\Rule;
 
 /**
  * Class UpdateProjectRequest.
@@ -53,7 +54,16 @@ class UpdateProjectRequest extends Request
     {
         return [
             'id'    =>  'required',
-            'name'  =>  'required'
+            'name'  =>  [
+                'required',
+                'min: 3',
+                Rule::unique('projects')->where(function ($query) {
+                    $params = request()->route()->parameters('id');
+                    $id = $params['id'];
+                    return $query->where('user_id', Auth()->user()->id)
+                        ->where('id', '!=', $this->decode($id));
+                })
+            ]
         ];
     }
 

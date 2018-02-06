@@ -3,6 +3,7 @@
 namespace App\Containers\Project\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
+use Illuminate\Validation\Rule;
 
 /**
  * Class CreateProjectRequest.
@@ -54,7 +55,13 @@ class CreateProjectRequest extends Request
         return [
             // 'id' => 'required',
             // '{user-input}' => 'required|max:255',
-            'name'  =>  'required'
+            'name'  =>  [
+                'required',
+                'min: 3',
+                Rule::unique('projects')->where(function ($query) {
+                    return $query->where('user_id', Auth()->user()->id);
+                })
+            ]
         ];
     }
 
