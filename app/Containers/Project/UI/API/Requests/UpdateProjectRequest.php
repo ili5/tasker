@@ -59,7 +59,6 @@ class UpdateProjectRequest extends Request
                 'min: 3',
                 Rule::unique('projects')->where(function ($query) {
                     $params = request()->route()->parameters('id');
-                    dd($params);
                     $id = $params['id'];
                     return $query->where('user_id', Auth()->user()->id)
                         ->where('id', '!=', $this->decode($id));
