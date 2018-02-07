@@ -4,9 +4,8 @@ namespace App\Containers\User\Tasks;
 
 use App\Containers\User\Data\Criterias\AdminsCriteria;
 use App\Containers\User\Data\Criterias\ClientsCriteria;
-use App\Containers\User\Data\Criterias\FindUserByEmailOrNameCriteria;
 use App\Containers\User\Data\Criterias\RoleCriteria;
-use App\Containers\User\Data\Criterias\UserNotAssociatedWithProject;
+use App\Containers\User\Data\Criterias\SearchUsersForProjectAssociationCriteria;
 use App\Containers\User\Data\Repositories\UserRepository;
 use App\Ship\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 use App\Ship\Parents\Tasks\Task;
@@ -61,8 +60,7 @@ class GetAllUsersTask extends Task
 
     public function searchForProjectAssociation($projectId, $query)
     {
-        $this->userRepository->pushCriteria(new UserNotAssociatedWithProject($projectId));
-        $this->userRepository->pushCriteria(new FindUserByEmailOrNameCriteria($query));
+        $this->userRepository->pushCriteria(new SearchUsersForProjectAssociationCriteria($query, $projectId));
     }
 
 }

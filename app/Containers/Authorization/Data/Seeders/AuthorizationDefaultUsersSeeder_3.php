@@ -3,7 +3,9 @@
 namespace App\Containers\Authorization\Data\Seeders;
 
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Ship\Parents\Models\UserModel;
 use App\Ship\Parents\Seeders\Seeder;
+use Illuminate\Foundation\Testing\WithFaker;
 
 /**
  * Class AuthorizationDefaultUsersSeeder_3
@@ -12,7 +14,7 @@ use App\Ship\Parents\Seeders\Seeder;
  */
 class AuthorizationDefaultUsersSeeder_3 extends Seeder
 {
-
+    use WithFaker;
     /**
      * Run the database seeds.
      *
@@ -20,6 +22,7 @@ class AuthorizationDefaultUsersSeeder_3 extends Seeder
      */
     public function run()
     {
+        $this->setUpFaker();
         // Default Users (with their roles) ---------------------------------------------
         Apiato::call('User@CreateUserByCredentialsTask', [
             $isClient = true,
@@ -34,6 +37,15 @@ class AuthorizationDefaultUsersSeeder_3 extends Seeder
             'foobar',
             'Mick Nolan',
         ])->assignRole(Apiato::call('Authorization@FindRoleTask', ['client']));
+
+        for($i = 0; $i < 50; $i++){
+            Apiato::call('User@CreateUserByCredentialsTask', [
+                $isClient = true,
+                $this->faker->email,
+                $this->faker->password,
+                $this->faker->name,
+            ])->assignRole(Apiato::call('Authorization@FindRoleTask', ['client']));
+        }
 
         \DB::table('oauth_clients')->insert([
             'name'  =>  'TaskeR Password Grant Client',
