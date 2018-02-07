@@ -2,13 +2,16 @@
 
 namespace App\Containers\Project\UI\API\Controllers;
 
+use App\Containers\Project\UI\API\Requests\AddAssociatedUserRequest;
 use App\Containers\Project\UI\API\Requests\CreateProjectRequest;
 use App\Containers\Project\UI\API\Requests\DeleteProjectRequest;
 use App\Containers\Project\UI\API\Requests\GetAllProjectsRequest;
 use App\Containers\Project\UI\API\Requests\FindProjectByIdRequest;
+use App\Containers\Project\UI\API\Requests\RemoveAssociatedUserRequest;
 use App\Containers\Project\UI\API\Requests\UpdateProjectRequest;
 use App\Containers\Project\UI\API\Transformers\ProjectTransformer;
 use App\Containers\Project\UI\API\Transformers\SingleProjectTransformer;
+use App\Containers\User\UI\API\Transformers\UserTransformer;
 use App\Ship\Parents\Controllers\ApiController;
 use Apiato\Core\Foundation\Facades\Apiato;
 
@@ -72,5 +75,23 @@ class Controller extends ApiController
         Apiato::call('Project@DeleteProjectAction', [$request]);
 
         return $this->noContent();
+    }
+
+    /**
+     * @param RemoveAssociatedUserRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function removeAssociatedUser(RemoveAssociatedUserRequest $request)
+    {
+        Apiato::call('Project@RemoveAssociatedUserAction', [$request]);
+
+        return $this->noContent();
+    }
+
+    public function addAssociatedUser(AddAssociatedUserRequest $request)
+    {
+        $user = Apiato::call('Project@AddAssociatedUserAction', [$request]);
+
+        return $this->transform($user, UserTransformer::class);
     }
 }

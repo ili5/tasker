@@ -12,6 +12,7 @@ use App\Containers\User\UI\API\Requests\GetAuthenticatedUserRequest;
 use App\Containers\User\UI\API\Requests\MeRequest;
 use App\Containers\User\UI\API\Requests\RegisterUserRequest;
 use App\Containers\User\UI\API\Requests\ResetPasswordRequest;
+use App\Containers\User\UI\API\Requests\SearchUserForProjectAssociationRequest;
 use App\Containers\User\UI\API\Requests\UpdateUserRequest;
 use App\Containers\User\UI\API\Transformers\UserPrivateProfileTransformer;
 use App\Containers\User\UI\API\Transformers\UserTransformer;
@@ -159,7 +160,10 @@ class Controller extends ApiController
         return $this->noContent(202);
     }
 
-
+    /**
+     * @param MeRequest $request
+     * @return array
+     */
     public function me(MeRequest $request)
     {
         $request->merge([
@@ -168,5 +172,14 @@ class Controller extends ApiController
         $user = Apiato::call('User@FindUserByIdAction', [new DataTransporter($request)]);
         return $this->transform($user, UserTransformer::class);
     }
+
+    public function searchUserForProjectAssociation(SearchUserForProjectAssociationRequest $request)
+    {
+        $users = Apiato::call('User@SearchUserForProjectAssociationAction', [$request]);
+
+        return $this->transform($users, UserTransformer::class);
+    }
+
+
 
 }
