@@ -16,6 +16,8 @@ class CreateBoardTables extends Migration
             $table->increments('id');
             $table->unsignedInteger('project_id');
             $table->string('name');
+            $table->string('color');
+            $table->integer('order');
             $table->timestamps();
             //$table->softDeletes();
 

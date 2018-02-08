@@ -4,6 +4,7 @@ namespace App\Containers\Project\Tasks;
 
 use App\Containers\Project\Data\Repositories\ProjectRepository;
 use App\Containers\Project\Data\Criterias\MyOwnWithAssociatedProjects;
+use App\Ship\Criterias\Eloquent\OrderByCreationDateDescendingCriteria;
 use App\Ship\Parents\Tasks\Task;
 
 class GetAllProjectsTask extends Task
@@ -19,6 +20,7 @@ class GetAllProjectsTask extends Task
     public function run()
     {
         $this->repository->pushCriteria(MyOwnWithAssociatedProjects::class);
-        return $this->repository->paginate();
+        $this->repository->pushCriteria(OrderByCreationDateDescendingCriteria::class);
+        return $this->repository->get();
     }
 }
