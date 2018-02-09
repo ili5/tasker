@@ -18,4 +18,9 @@ class TaskRepository extends Repository
         // ...
     ];
 
+//    public function orWhereHas($relation, $closure) {
+//        $this->model = $this->model->orWhereHas($relation, $closure);
+//        return $this;
+//    }
+
 }

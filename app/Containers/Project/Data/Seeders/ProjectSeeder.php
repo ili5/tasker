@@ -44,8 +44,8 @@ class ProjectSeeder extends Seeder
                 $associatedUsers = [];
                 for($j = 1; $j < rand(3,10); $j++) {
                     $userId = rand(1,52);
-                    $associatedUsers[] = $userId;
                     if($userId != $i){
+                        $associatedUsers[] = $userId;
                         $project->associatedUsers()->syncWithoutDetaching([$userId]);
                     }
                 }

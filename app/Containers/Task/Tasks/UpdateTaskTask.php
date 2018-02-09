@@ -2,6 +2,7 @@
 
 namespace App\Containers\Task\Tasks;
 
+use App\Containers\Task\Data\Criterias\CheckIfUserCanUpdateCriteria;
 use App\Containers\Task\Data\Repositories\TaskRepository;
 use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
@@ -23,15 +24,11 @@ class UpdateTaskTask extends Task
             /*
              * Task can be modified by project owner, task creator or task assigned user
              */
-            return $this->repository->orWhereHas('project.user', function($q) {
-                $q->where('id', request()->user()->id);
-            })->orWhereHas('creator', function($q) {
-                $q->where('id', request()->user()->id);
-            })->orWhereHas('assigned', function($q) {
-                $q->where('id', request()->user()->id);
-            })->update($data, $id);
+            $this->repository->pushCriteria(CheckIfUserCanUpdateCriteria::class);
+            return $this->repository->update($data, $id);
         }
         catch (Exception $exception) {
+            dd($exception->getMessage());
             throw new UpdateResourceFailedException();
         }
     }

@@ -33,7 +33,11 @@ class UpdateTaskRequest extends Request
      * @var  array
      */
     protected $decode = [
-        // 'id',
+        'id',
+        'board_id',
+        'project_id',
+        'creator_id',
+        'assigned_id'
     ];
 
     /**
@@ -43,7 +47,7 @@ class UpdateTaskRequest extends Request
      * @var  array
      */
     protected $urlParameters = [
-        // 'id',
+         'id',
     ];
 
     /**
@@ -52,7 +56,7 @@ class UpdateTaskRequest extends Request
     public function rules()
     {
         return [
-            // 'id' => 'required',
+             'id' => 'required',
             // '{user-input}' => 'required|max:255',
         ];
     }
