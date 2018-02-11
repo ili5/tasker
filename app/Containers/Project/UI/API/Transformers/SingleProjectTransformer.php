@@ -36,6 +36,7 @@ class SingleProjectTransformer extends Transformer
             'id' => $entity->getHashedKey(),
             'name'  =>  $entity->name,
             'description'   =>  $entity->description,
+            'owner' =>  ($entity->user->id == Auth()->user()->id) ? true : false,
             'created_at' => $entity->created_at,
             'updated_at' => $entity->updated_at,
 
