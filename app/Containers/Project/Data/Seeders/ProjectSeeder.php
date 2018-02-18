@@ -52,7 +52,7 @@ class ProjectSeeder extends Seeder
                 $associatedUsers[] = $i;
 
                 // Add tasks to project
-                for($k = 0; $k < rand(30,60); $k++) {
+                for($k = 0; $k < rand(10,30); $k++) {
                     factory(Task::class)->create([
                         'project_id'    =>  $project->id,
                         'board_id'  =>  $boards[rand(0,3)]->id,
