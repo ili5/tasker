@@ -2,6 +2,7 @@
 
 namespace App\Containers\Task\Tasks;
 
+use App\Containers\Task\Data\Criterias\CheckIfUserCanDeleteCriteria;
 use App\Containers\Task\Data\Repositories\TaskRepository;
 use App\Ship\Exceptions\DeleteResourceFailedException;
 use App\Ship\Parents\Tasks\Task;
@@ -23,13 +24,11 @@ class DeleteTaskTask extends Task
             /*
             * Task can be deleted by project owner or task creator
             */
-            return $this->repository->orWhereHas('project.user', function($q) {
-                $q->where('id', request()->user()->id);
-            })->orWhereHas('creator', function($q) {
-                $q->where('id', request()->user()->id);
-            })->delete($id);
+//            $this->repository->pushCriteria(CheckIfUserCanDeleteCriteria::class);
+            return $this->repository->delete($id);
         }
         catch (Exception $exception) {
+            dd($exception->getMessage());
             throw new DeleteResourceFailedException();
         }
     }
