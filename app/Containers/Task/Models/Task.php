@@ -3,6 +3,7 @@
 namespace App\Containers\Task\Models;
 
 use App\Containers\Board\Models\Board;
+use App\Containers\Message\Models\Message;
 use App\Containers\Project\Models\Project;
 use App\Containers\User\Models\User;
 use App\Ship\Parents\Models\Model;
@@ -60,5 +61,10 @@ class Task extends Model
     public function assigned()
     {
         return $this->belongsTo(User::class, 'assigned_id');
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'task_id');
     }
 }

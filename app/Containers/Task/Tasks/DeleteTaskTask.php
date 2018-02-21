@@ -24,7 +24,7 @@ class DeleteTaskTask extends Task
             /*
             * Task can be deleted by project owner or task creator
             */
-//            $this->repository->pushCriteria(CheckIfUserCanDeleteCriteria::class);
+            $this->repository->pushCriteria(CheckIfUserCanDeleteCriteria::class);
             return $this->repository->delete($id);
         }
         catch (Exception $exception) {

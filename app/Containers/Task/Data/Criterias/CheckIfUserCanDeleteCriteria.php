@@ -8,10 +8,10 @@ class CheckIfUserCanDeleteCriteria extends Criteria {
 
     public function apply($model, RepositoryInterface $repository)
     {
-        return $model->whereHas('project.user', function($q) {
-            $q->where('id', request()->user()->id);
-        })->orWhereHas('creator', function($q) {
-            $q->where('id', request()->user()->id);
+        return $model->where(function($query) {
+            return $query->whereHas('project', function($q) {
+                $q->where('user_id', request()->user()->id);
+            })->orWhere('creator_id', request()->user()->id);
         });
     }
 }
