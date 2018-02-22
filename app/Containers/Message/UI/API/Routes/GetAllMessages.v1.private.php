@@ -20,7 +20,7 @@
  */
 
 /** @var Route $router */
-$router->get('messages', [
+$router->get('messages/{task_id}', [
     'as' => 'api_message_get_all_messages',
     'uses'  => 'Controller@getAllMessages',
     'middleware' => [

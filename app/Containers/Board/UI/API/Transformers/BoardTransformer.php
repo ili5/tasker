@@ -32,6 +32,7 @@ class BoardTransformer extends Transformer
             'object' => 'Board',
             'id' => $entity->getHashedKey(),
             'name'  =>  $entity->name,
+            'color' =>  $entity->color,
             'created_at' => $entity->created_at,
             'updated_at' => $entity->updated_at,
 

@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Auth;
 class CreateProjectAction extends Action
 {
     const DefaultBoards = [
-        'Planning',
-        'In Progress',
-        'Testing',
-        'Done'
+        'Planning' => 'bg-info',
+        'In Progress' => 'bg-primary',
+        'Testing' => 'bg-warning',
+        'Done' => 'bg-success'
     ];
 
     public function run(Request $request)
@@ -36,10 +36,11 @@ class CreateProjectAction extends Action
 
     protected function createDefaultBoards(Project $project)
     {
-        foreach(self::DefaultBoards as $boardName) {
+        foreach(self::DefaultBoards as $boardName => $boardColor) {
             $data = [
                 'name'  =>  $boardName,
-                'project_id'    =>  $project->id
+                'project_id'    =>  $project->id,
+                'color' =>  $boardColor
             ];
             Apiato::call(CreateBoardTask::class, [$data]);
         }

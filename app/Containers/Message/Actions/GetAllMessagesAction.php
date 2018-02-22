@@ -10,7 +10,11 @@ class GetAllMessagesAction extends Action
 {
     public function run(Request $request)
     {
-        $messages = Apiato::call('Message@GetAllMessagesTask');
+        $criterias = [
+            'task'   =>  [$request->task_id]
+        ];
+
+        $messages = Apiato::call('Message@GetAllMessagesTask', [], [$criterias]);
 
         return $messages;
     }

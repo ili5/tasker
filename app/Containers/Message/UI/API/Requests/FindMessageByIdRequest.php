@@ -33,7 +33,7 @@ class FindMessageByIdRequest extends Request
      * @var  array
      */
     protected $decode = [
-        // 'id',
+         'task_id', 'id',
     ];
 
     /**
@@ -43,7 +43,7 @@ class FindMessageByIdRequest extends Request
      * @var  array
      */
     protected $urlParameters = [
-        // 'id',
+         'task_id', 'id'
     ];
 
     /**

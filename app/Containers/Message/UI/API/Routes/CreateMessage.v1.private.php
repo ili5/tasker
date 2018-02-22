@@ -20,7 +20,7 @@
  */
 
 /** @var Route $router */
-$router->post('messages', [
+$router->post('messages/{task_id}', [
     'as' => 'api_message_create_message',
     'uses'  => 'Controller@createMessage',
     'middleware' => [

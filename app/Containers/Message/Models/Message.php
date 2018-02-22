@@ -3,6 +3,7 @@
 namespace App\Containers\Message\Models;
 
 use App\Containers\Task\Models\Task;
+use App\Containers\User\Models\User;
 use App\Ship\Parents\Models\Model;
 
 class Message extends Model

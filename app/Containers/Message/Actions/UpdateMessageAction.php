@@ -11,7 +11,7 @@ class UpdateMessageAction extends Action
     public function run(Request $request)
     {
         $data = $request->sanitizeInput([
-            // add your request data here
+            'message'
         ]);
 
         $message = Apiato::call('Message@UpdateMessageTask', [$request->id, $data]);

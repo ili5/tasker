@@ -8,7 +8,7 @@ use App\Ship\Parents\Models\Model;
 class Board extends Model
 {
     protected $fillable = [
-        'project_id', 'name'
+        'project_id', 'name', 'color'
     ];
 
     protected $attributes = [
