@@ -21,8 +21,8 @@ before_install:
   - travis_retry composer self-update
 
 install:
-  - if [[ $setup = 'stable' ]]; then travis_retry composer update; fi
-  - if [[ $setup = 'normal' ]]; then travis_retry composer update; fi
+  - if [[ $setup = 'stable' ]]; then travis_retry composer install; fi
+  - if [[ $setup = 'normal' ]]; then travis_retry composer install; fi
 
 before_script:
   - cp .env.travis .env
