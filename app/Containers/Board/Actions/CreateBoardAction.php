@@ -12,7 +12,8 @@ class CreateBoardAction extends Action
     {
         $data = $request->sanitizeInput([
             'name',
-            'project_id'
+            'project_id',
+            'color'
         ]);
 
         $board = Apiato::call('Board@CreateBoardTask', [$data]);

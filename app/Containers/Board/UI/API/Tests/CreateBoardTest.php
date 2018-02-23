@@ -17,7 +17,8 @@ class CreateBoardTest extends TestCase {
 
         $data = [
             'name'  =>  'Test Board',
-            'project_id'    =>  $project->getHashedKey()
+            'project_id'    =>  $project->getHashedKey(),
+            'color' =>  'bg-white'
         ];
 
         $response = $this->makeCall($data);
@@ -40,7 +41,8 @@ class CreateBoardTest extends TestCase {
 
         $data = [
             'name'  =>  'Test Board',
-            'project_id'    =>  $project->getHashedKey()
+            'project_id'    =>  $project->getHashedKey(),
+            'color' =>  'bg-white'
         ];
 
         $response = $this->makeCall($data);
@@ -57,7 +59,8 @@ class CreateBoardTest extends TestCase {
 
         $data = [
             'name'  =>  'Test Board',
-            'project_id'    =>  $project->getHashedKey()
+            'project_id'    =>  $project->getHashedKey(),
+            'color' =>  'bg-white'
         ];
 
         $response = $this->makeCall($data);

@@ -39,5 +39,6 @@
         <env name="DB_NAME"             value="apiato_db"/>
         <env name="DB_USERNAME"         value="apiato_db"/>
         <env name="DB_PASSWORD"         value="secret"/>
+        <ini name="memory_limit"        value="-1"/>
     </php>
 </phpunit>
