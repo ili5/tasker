@@ -38,7 +38,7 @@ class GetAllClientsTest extends TestCase
         $responseContent = $this->getResponseContentObject();
 
         // assert the returned data size is correct
-        $this->assertCount(5, $responseContent->data);
+        $this->assertCount(8, $responseContent->data);
     }
 
     public function testGetAllClientsByNonAdmin_()

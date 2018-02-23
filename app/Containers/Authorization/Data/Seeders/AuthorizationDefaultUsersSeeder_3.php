@@ -38,7 +38,7 @@ class AuthorizationDefaultUsersSeeder_3 extends Seeder
             'Mick Nolan',
         ])->assignRole(Apiato::call('Authorization@FindRoleTask', ['client']));
 
-        for($i = 0; $i < 10; $i++){
+        for($i = 0; $i < 3; $i++){
             Apiato::call('User@CreateUserByCredentialsTask', [
                 $isClient = true,
                 $this->faker->email,

@@ -15,7 +15,7 @@ class MessageSeeder_7 extends Seeder {
             $users[] = $project->user->toArray();
             $usersNum = sizeof($users)-1;
             foreach($project->tasks as $task) {
-                for($i = 0; $i < rand(1, 3); $i++) {
+                for($i = 0; $i < 3; $i++) {
                     factory(Message::class)->create([
                         'task_id'   =>  $task->id,
                         'user_id'   =>  $users[rand(0, $usersNum)]['id']

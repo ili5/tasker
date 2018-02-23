@@ -20,15 +20,15 @@ class ProjectSeeder_4 extends Seeder
     {
         $this->setUpFaker();
 
-        $usersNumber = 12;
+        $usersNumber = 5;
         for ($i = 1; $i <= $usersNumber; $i++){
-            factory(Project::class, rand(5,10))->create([
+            factory(Project::class, 3)->create([
                 'user_id'   =>  $i
             ])->each(function($project) use ($i) {
                 // Add associated users on each project
                 $associatedUsers = [];
-                for($j = 1; $j < rand(3,10); $j++) {
-                    $userId = rand(1,52);
+                for($j = 1; $j < 10; $j++) {
+                    $userId = rand(1,5);
                     if($userId != $i){
                         $associatedUsers[] = $userId;
                         $project->associatedUsers()->syncWithoutDetaching([$userId]);

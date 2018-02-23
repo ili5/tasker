@@ -28,7 +28,6 @@ class GetAllProjectsTest extends TestCase
     {
         // create user
         $user = $this->getTestingUser();
-
         // create user projects
         factory(Project::class, 2)->create([
             'user_id' => $user->id

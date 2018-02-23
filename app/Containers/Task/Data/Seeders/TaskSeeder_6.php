@@ -18,7 +18,7 @@ class TaskSeeder_6 extends Seeder {
             $users[] = $owner;
 
             foreach($project->boards as $board){
-                for($i = 0; $i < rand(2,5); $i++) {
+                for($i = 0; $i < 5; $i++) {
                     factory(Task::class)->create([
                         'project_id'    =>  $project->id,
                         'board_id'      =>  $board->id,

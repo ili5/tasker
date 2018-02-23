@@ -5,6 +5,7 @@
 /vendor
 Homestead.json
 Homestead.yaml
+homestead
 .env
 storage/logs/laravel.log
 /public/api-rendered-markdowns/*
